@@ -4,22 +4,33 @@ body {
     font-size: 22px;
 }
 
-/* ------------------------------------------------------------------------ Title Header----*/
-#game-name {
-    text-align: center;
+
+/* ------------------------------------------------------------------------ Colour----*/
+#up {
+  --bs-btn-bg: #198754;
+  --bs-btn-border-color: #198754;
+  --bs-btn-hover-bg: #105837;
+  --bs-btn-hover-border-color: #105837;
+}
+#down {
+  --bs-btn-bg: #0dcaf0;
+  --bs-btn-border-color: #0dcaf0;
+  --bs-btn-hover-bg: #056c80;
+  --bs-btn-hover-border-color: #056c80;
+}
+#left {
+  --bs-btn-bg: #dc3545;
+  --bs-btn-border-color: #dc3545;
+  --bs-btn-hover-bg: #972631;
+  --bs-btn-hover-border-color: #972631;
+}
+#right {
+  --bs-btn-bg: #ffc107;
+  --bs-btn-border-color: #ffc107;
+  --bs-btn-hover-bg: #977100;
+  --bs-btn-hover-border-color: #977100;
 }
 
-/* ------------------------------------------------------------------------ Fa Icon size----*/
-.fa-solid {
-    font-size: 80px;
-}
-
-/* ------------------------------------------------------------------------ Arrow buttons----*/
-.arrow {
-    width: 100px;
-    height: 100px;
-    margin: 2px;
-}
 
 .btn-secondary {
   --bs-btn-color: #fff;
@@ -36,6 +47,73 @@ body {
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #fff;
   --bs-btn-disabled-border-color: #fff;
+  z-index: -99999;
+  position: relative;
+
+}
+
+/* ------------------------------------------------------------------------ Instructions----*/
+#myBtn {
+  width: 50px;
+  float: left;
+}
+
+
+/* ------------------------------------------------------------------------ Title Header----*/
+#game-name {
+    text-align: center;
+    padding-right: 50px;
+}
+
+/* ------------------------------------------------------------------------ Score Tracker----*/
+.score-container {
+  margin: 5px auto;
+  width: 309px;
+}
+
+.scores {
+  display: inline-block;
+  padding: 0 25px;
+  font-size: medium;
+}
+/* ------------------------------------------------------------------------Controls----*/
+#game-controls {
+    width: 309px;
+    margin: auto;
+}
+
+#info {
+  font-size: 20px;
+}
+
+
+.fa-solid {
+    font-size: 80px;
+}
+
+.arrow {
+    width: 100px;
+    height: 100px;
+}
+
+
+#start-button {
+  width: 200px;
+  font-size: large;
+}
+
+#start-button-container {
+  width: 200px;
+  padding-top: 20px;
+  margin: auto;
+  
+}
+
+/* ------------------------------------------------------------------------ Light Up----*/
+
+.lightOn {
+  box-shadow: 0 0 50px 15px #ffa12e;
+}
 
 /* ------------------------------------------------------------------------ Text Transfrom----*/
 .uppercase {
@@ -75,8 +153,7 @@ body {
     font-weight: bold;
   }
   
-  .close:hover,
-  .close:focus {
+  .close:hover, .close:focus {
     text-decoration: none;
     cursor: pointer;
   }
