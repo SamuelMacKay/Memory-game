@@ -11,24 +11,32 @@ body {
   --bs-btn-border-color: #198754;
   --bs-btn-hover-bg: #105837;
   --bs-btn-hover-border-color: #105837;
+  --bs-btn-active-bg: #66f4b2;
+  --bs-btn-active-border-color: #66f4b2;
 }
 #down {
   --bs-btn-bg: #0dcaf0;
   --bs-btn-border-color: #0dcaf0;
   --bs-btn-hover-bg: #056c80;
   --bs-btn-hover-border-color: #056c80;
+  --bs-btn-active-bg: #c1f5ff;
+  --bs-btn-active-border-color: #c1f5ff;
 }
 #left {
   --bs-btn-bg: #dc3545;
   --bs-btn-border-color: #dc3545;
   --bs-btn-hover-bg: #972631;
   --bs-btn-hover-border-color: #972631;
+  --bs-btn-active-bg: #ffbec5;
+  --bs-btn-active-border-color: #ffbec5;
 }
 #right {
   --bs-btn-bg: #ffc107;
   --bs-btn-border-color: #ffc107;
   --bs-btn-hover-bg: #977100;
   --bs-btn-hover-border-color: #977100;
+  --bs-btn-active-bg: #fff0c4;
+  --bs-btn-active-border-color: #fff0c4;
 }
 
 
@@ -76,6 +84,7 @@ body {
   padding: 0 25px;
   font-size: medium;
 }
+
 /* ------------------------------------------------------------------------Controls----*/
 #game-controls {
     width: 309px;

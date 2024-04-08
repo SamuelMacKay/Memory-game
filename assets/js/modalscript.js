@@ -1,8 +1,16 @@
+/* ------------------------------------------------------------------------Game Over Modal----*/
+
+
 // Get the modal
-var modal = document.getElementById("myModal");
+var gameOverModal = document.getElementById("game-over-modal");
+
+/* ------------------------------------------------------------------------Info Modal----*/
+
+// Get the modal
+var modal = document.getElementById("info-modal");
   
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("info-button");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -23,3 +31,4 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+

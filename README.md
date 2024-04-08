@@ -109,6 +109,10 @@ This is a sample of shots of what the site looks like on different devices.
 ### Bugs
 #### Bug 1
 
+- The font awesome icons are getting in the way of the click event, and it is confusing the code.
+
+-
+
 - ### Unfixed Bugs
  - n/a
 

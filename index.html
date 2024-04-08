@@ -16,7 +16,7 @@
 <body>
     <header>
       <!-- Button trigger modal -->
-      <button type="button" id="myBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button type="button" id="info-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i id="info" class="fa-solid fa-circle-info"></i>
       </button>
       <h1 id="game-name" class="uppercase">Memorrow</h1>
@@ -27,15 +27,15 @@
     </header>
     <div id="game-controls">
         <button class="btn btn-secondary arrow"></i></button>
-        <button data-listener="false" id="up" class="btn btn-primary arrow"><i class="fa-solid fa-arrow-up"></i></button>
+        <button data-listener="false" id="up" class="btn btn-primary arrow"></button>
         <button class="btn btn-secondary arrow"></i></button>
         <br>
-        <button data-listener="false" id="left" class="btn btn-primary arrow"><i class="fa-solid fa-arrow-left"></i></button>
+        <button data-listener="false" id="left" class="btn btn-primary arrow"></button>
         <button class="btn btn-secondary arrow"></i></button>
-        <button data-listener="false" id="right" class="btn btn-primary arrow"><i class="fa-solid fa-arrow-right"></i></button>
+        <button data-listener="false" id="right" class="btn btn-primary arrow"></button>
         <br>
         <button class="btn btn-secondary arrow"></i></button>
-        <button data-listener="false" id="down" class="btn btn-primary arrow"><i class="fa-solid fa-arrow-down"></i></button>
+        <button data-listener="false" id="down" class="btn btn-primary arrow"></button>
         <button class="btn btn-secondary arrow"></i></button>
     </div>
     <div id="start-button-container">
@@ -44,8 +44,8 @@
 </body>
 
 
-<!-- The Modal -->
-<div id="myModal" class="modal" tabindex="-1">
+<!-- Info Modal -->
+<div id="info-modal" class="modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -60,6 +60,23 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary close">I understand!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Game Over Modal -->
+<div id="game-over-modal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Game Over!</h2>
+      </div>
+      <div class="modal-body">
+          <p>Oh no! that was the wrong button! </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary close">Try Again?</button>
       </div>
     </div>
   </div>
