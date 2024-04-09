@@ -63,6 +63,7 @@ body {
 /* ------------------------------------------------------------------------ Instructions----*/
 #info-button {
   width: 50px;
+  height: 50px;
   float: left;
 }
 
@@ -71,6 +72,7 @@ body {
 #game-name {
     text-align: center;
     padding-right: 50px;
+    height: 50px;
 }
 
 /* ------------------------------------------------------------------------ Score Tracker----*/

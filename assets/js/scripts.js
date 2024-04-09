@@ -126,7 +126,6 @@ function playerTurn() {
         }
     } else {
         alert("Oh no! that was the wrong one! try again?");
-        showElement(document.getElementById("game-over-modal"));
         if (game.score >= game.highScore){
             highScore();
         }
