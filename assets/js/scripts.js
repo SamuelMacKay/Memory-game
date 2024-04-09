@@ -129,7 +129,7 @@ function playerTurn() {
         showElement(document.getElementById("game-over-modal"));
         if (game.score >= game.highScore){
             highScore();
-        };
+        }
         newGame();
     }
 }
