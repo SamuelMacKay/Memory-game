@@ -1,8 +1,11 @@
 /* ------------------------------------------------------------------------Game Over Modal----*/
 
 
-// Get the modal
-var gameOverModal = document.getElementById("game-over-modal");
+// // Get the modal
+// var showGameOverModal = document.getElementById("game-over-modal");
+
+// // Get the button that opens the modal
+// var gameOverBtn = document.getElementById("game-over-button");
 
 /* ------------------------------------------------------------------------Info Modal----*/
 
