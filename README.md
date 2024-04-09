@@ -168,8 +168,14 @@ To check the colors and fonts, I used Lighthouse in the Google devtools. The res
  The live link can be found here - [](https://samuelmackay.github.io//)
 
 ## Credits
-  
+
 ### Content
+- Processes from the CI Love Running project was used to help create this website - [CI Love Running](https://code-institute-org.github.io/love-running-2.0/index.html)
+- Proccesses from the CI Love Maths project was used to help create this website - [CI Love Maths](https://github.com/Code-Institute-Solutions/love-maths-2.0-sourcecode.git)
+- Proccesses from the CI testing with jest was used to help create this website - [CI Jest Testing](https://github.com/Code-Institute-Solutions/Jest_Testing_Part2.git)#
+- HTML, CSS and Javascript code help was taken from w3schools - [W3Schools](https://www.w3schools.com/)
+- Buttons and Modal are from Bootstrap5 [Bootstrap](https://getbootstrap.com/docs/5.3)
+- Keydown for arrow key functionality was taking from [Stackoverflow] (https://stackoverflow.com/questions/57681634/press-an-arrow-key-using-a-html-button-or-simply-press-it)
 
 ### Media
 
