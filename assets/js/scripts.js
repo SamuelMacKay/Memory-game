@@ -10,6 +10,11 @@ let game = {
     choices: ["up", "left", "right", "down"]
 };
 
+document.addEventListener("DOMContentLoaded", (event) => {
+    game.highScore = sessionStorage.getItem("High-Score");
+    document.getElementById("high-score").innerText = game.highScore;
+  });
+
 // ----------------------------------Function that starts the game when you first arrive on the page, and will reset the current game if pressed during the game
 function newGame() {
     game.currentGame = [];
@@ -127,10 +132,10 @@ function playerTurn() {
     } else {
         alert("Oh no! that was the wrong one! try again?");
         if (game.score >= game.highScore){
-            highScore();
-        }
-        newGame();
+        highScore();
     }
+    newGame();
+}
 }
 /**
  * increments the current games score
@@ -138,9 +143,12 @@ function playerTurn() {
 function showScore() {
     document.getElementById("score").innerText = game.score;
 }
+
 /** 
  * increments the highscore 
 */
 function highScore() {
+    game.highScore = game.score;
     document.getElementById("high-score").innerText = game.highScore;
+    sessionStorage.setItem("High-Score", game.highScore);
 }
