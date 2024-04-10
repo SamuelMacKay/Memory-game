@@ -4,7 +4,6 @@ body {
     font-size: 22px;
 }
 
-
 /* ------------------------------------------------------------------------ Colour----*/
 #up {
   --bs-btn-bg: #198754;
@@ -14,6 +13,7 @@ body {
   --bs-btn-active-bg: #66f4b2;
   --bs-btn-active-border-color: #66f4b2;
 }
+
 #down {
   --bs-btn-bg: #0dcaf0;
   --bs-btn-border-color: #0dcaf0;
@@ -21,7 +21,9 @@ body {
   --bs-btn-hover-border-color: #056c80;
   --bs-btn-active-bg: #c1f5ff;
   --bs-btn-active-border-color: #c1f5ff;
+  margin-left: 3px;
 }
+
 #left {
   --bs-btn-bg: #dc3545;
   --bs-btn-border-color: #dc3545;
@@ -30,6 +32,7 @@ body {
   --bs-btn-active-bg: #ffbec5;
   --bs-btn-active-border-color: #ffbec5;
 }
+
 #right {
   --bs-btn-bg: #ffc107;
   --bs-btn-border-color: #ffc107;
@@ -37,8 +40,8 @@ body {
   --bs-btn-hover-border-color: #977100;
   --bs-btn-active-bg: #fff0c4;
   --bs-btn-active-border-color: #fff0c4;
+  margin-left: 3px;
 }
-
 
 .btn-secondary {
   --bs-btn-color: #fff;
@@ -94,7 +97,7 @@ body {
 }
 
 #info {
-  font-size: 20px;
+  font-size: 26px;
 }
 
 
@@ -106,7 +109,6 @@ body {
     width: 100px;
     height: 100px;
 }
-
 
 #start-button {
   width: 200px;
@@ -130,7 +132,6 @@ body {
 .uppercase {
     text-transform: uppercase;
 }
-
 
 /* ------------------------------------------------------------------------ The Modal----*/
 /* The Modal (background) */
