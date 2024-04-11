@@ -11,8 +11,9 @@ let game = {
 };
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    game.highScore = sessionStorage.getItem("High-Score");
+    game.highScore = sessionStorage.getItem("High-Score") || "0";
     document.getElementById("high-score").innerText = game.highScore;
+    
   });
 
 // ----------------------------------Function that starts the game when you first arrive on the page, and will reset the current game if pressed during the game
@@ -25,7 +26,7 @@ function newGame() {
         if (arrow.getAttribute("data-listener") !== "true") {
             arrow.addEventListener("click", (e) => {
                 if (game.currentGame.length > 0 && !game.turnInProgress) {
-                    let move = e.target.getAttribute("id");
+                    let move = e.currentTarget.getAttribute("id");
                     game.lastButton = move;
                     game.playerMoves.push(move);
                     lightsOn(move);
@@ -125,16 +126,17 @@ function playerTurn() {
     if (game.currentGame[i] === game.playerMoves[i]) {
         if (game.currentGame.length === game.playerMoves.length) {
             game.score++;
-            game.highScore++;
             showScore();
             addTurn();
         }
     } else {
-        alert("Oh no! that was the wrong one! try again?");
+        let showGameOverModal = document.getElementById("game-over-modal");
+        showGameOverModal.style.display = "block";
+        console.log(game.score);
+        console.log(game.highScore);
         if (game.score >= game.highScore){
         highScore();
     }
-    newGame();
 }
 }
 /**

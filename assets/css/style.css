@@ -125,7 +125,8 @@ body {
 /* ------------------------------------------------------------------------ Light Up----*/
 
 .light-up {
-  box-shadow: 0 0 50px 15px #a749ff;
+  /* Use the variable for the box-shadow color */
+  box-shadow: 0 0 50px 15px var(--bs-btn-bg);
 }
 
 /* ------------------------------------------------------------------------ Text Transfrom----*/
