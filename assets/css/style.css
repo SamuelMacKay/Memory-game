@@ -21,7 +21,6 @@ body {
   --bs-btn-hover-border-color: #056c80;
   --bs-btn-active-bg: #c1f5ff;
   --bs-btn-active-border-color: #c1f5ff;
-  margin-left: 3px;
 }
 
 #left {
@@ -40,7 +39,7 @@ body {
   --bs-btn-hover-border-color: #977100;
   --bs-btn-active-bg: #fff0c4;
   --bs-btn-active-border-color: #fff0c4;
-  margin-left: 3px;
+  margin: 3px 0;
 }
 
 .btn-secondary {
@@ -81,7 +80,7 @@ body {
 /* ------------------------------------------------------------------------ Score Tracker----*/
 .score-container {
   margin: 5px auto;
-  width: 309px;
+  width: 310px;
 }
 
 .scores {
@@ -92,7 +91,7 @@ body {
 
 /* ------------------------------------------------------------------------Controls----*/
 #game-controls {
-    width: 309px;
+    width: 310px;
     margin: auto;
 }
 
