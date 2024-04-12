@@ -11,7 +11,7 @@ let game = {
 };
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    game.highScore = sessionStorage.getItem("High-Score") || "0";
+    game.highScore = localStorage.getItem("High-Score") || "0";
     document.getElementById("high-score").innerText = game.highScore;
     
   });
@@ -152,5 +152,5 @@ function showScore() {
 function highScore() {
     game.highScore = game.score;
     document.getElementById("high-score").innerText = game.highScore;
-    sessionStorage.setItem("High-Score", game.highScore);
+    localStorage.setItem("High-Score", game.highScore);
 }
