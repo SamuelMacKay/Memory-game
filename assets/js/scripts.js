@@ -1,4 +1,6 @@
-/* ------------------------------------------------------------------------Game Objects----*/
+/**  
+ * Game objects
+ */
 let game = {
     currentGame: [],
     playerMoves: [],
@@ -10,13 +12,18 @@ let game = {
     choices: ["up", "left", "right", "down"]
 };
 
+/**  
+ * Waits until DOM is loaded, and then writes local storage highscore into "high-score" div or sets it to "0" if its empty
+ */
 document.addEventListener("DOMContentLoaded", (event) => {
     game.highScore = localStorage.getItem("High-Score") || "0";
     document.getElementById("high-score").innerText = game.highScore;
     
   });
 
-// ----------------------------------Function that starts the game when you first arrive on the page, and will reset the current game if pressed during the game
+/**  
+ * Function that starts the game when you click "start-button", and will reset the current game if pressed during the game
+ */
 function newGame() {
     game.currentGame = [];
     game.playerMoves = [];
@@ -39,6 +46,17 @@ function newGame() {
     showScore();
     addTurn();
 }
+
+/**  
+ * starts newGame when clicking start, pressing "space" and "enter"
+ */
+document.addEventListener("DOMContentLoaded", (event) => {
+    document.getElementById("start-button");
+    addEventListener ("click", (e) => {
+        newGame();
+    });
+  });
+
 /**  
  * This adds ability to activate the buttons via the arrow keys, 
  * as well as starting the game with space or enter
@@ -76,7 +94,7 @@ window.addEventListener(
       // Cancel the default action to avoid it being handled twice
       event.preventDefault();
     },
-    true,
+    true
   );
 
 /**  
@@ -87,11 +105,11 @@ function addTurn() {
     game.currentGame.push(game.choices[(Math.floor(Math.random() * 4))]);
     showTurns();
 }
+
 /**
  * This is the computer's turn, setting the pattern to follow, 
  * and how long there is inbetween each light up display
  */
-
 function showTurns() {
     game.turnInProgress = true;
     game.turnNumber = 0;
@@ -139,6 +157,7 @@ function playerTurn() {
     }
 }
 }
+
 /**
  * increments the current games score
  */
