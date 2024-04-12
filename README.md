@@ -2,7 +2,7 @@
 
 Memorrow is an arrow based memory game, to test your mind and reaction skills. The site will feature an interactive functioning game in which the player must try and beat their own best score in a "Simon-says" style memory game using either the corresponding arrow keys *OR* clicking the icons on screen.
 
-![Responsive Mockup](assets/media/final-mockup.png)
+![Responsive Mockup](assets/media/Responsive-mockup.png)
 
 ## User Stories 
 |Story No.|Story|
@@ -17,27 +17,6 @@ Memorrow is an arrow based memory game, to test your mind and reaction skills. T
 
 ## Wireframes
 Below are the designs that I can use to build the site. I have used the user story numbers to link where I can meet the goal in my design. This will help me to think about the users needs as I build the page.
-
-### Home Page Design<br>
-User Story Number - <br>
-![]()
-![]()
-
-### Gallery Page Design<br>
-User Story Number - <br>
-![]()
-![]()
-### Commission Page Design<br>
-User Story Number - <br>
-![]()
-![]()
-
-
-### Community contacts <br>
-User Story Number - <br>
-![]()
-![]()
-
 
 ***
 
@@ -68,7 +47,11 @@ User Story Number - <br>
 
 ### Features Left to Implement
 
-- N/A.
+- When you achieve a new high score, put in a name that is saved to local storage with the highscore info, and accessible from a button that opens a modal with the name and score"
+
+- have a confetti/firework effect when you beat previous score
+
+- diffculty option, removes 1-2 of the buttons at easier difficulties and addes diagonal buttons for hardest difficulty, with a leaderboard for each difficulty
 
 ## Testing
 
