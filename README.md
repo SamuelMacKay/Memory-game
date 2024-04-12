@@ -93,12 +93,12 @@ This is a sample of shots of what the site looks like on different devices.
 ### Validator Testing
 - HTML
     - index.html: No errors were returned when passing through the official W3C validator<br> 
-    <!-- https://validator.w3.org/nu/?doc=https%3A%2F%2Fsamuelmackay.github.io%2Fminiature-commission-painter%2Findex.html -->
+    https://validator.w3.org/nu/?doc=https%3A%2F%2Fsamuelmackay.github.io%2Fminiature-commission-painter%2Findex.html
 
 
 - CSS 
-    - style.css: No errors were returned when passing through offical Jigsaw validator<br> 
-    <!-- http://jigsaw.w3.org/css-validator/validator?lang=en&profile=css3svg&uri=https%3A%2F%2Fsamuelmackay.github.io%2Fminiature-commission-painter%2Fassets%2Fcss%2Fstyle.css&usermedium=all&vextwarning=&warning=1 -->
+ 
+![css validation](assets/media/css-validator.png)
 
 ### Manual Testing
 - I have tested that this page works in different web browsers.
