@@ -109,9 +109,143 @@ This is a sample of shots of what the site looks like on different devices.
 ### Bugs
 #### Bug 1
 
-- The font awesome icons are getting in the way of the click event, and it is confusing the code.
+- The font awesome icons are getting in the way of the click event, and it is confusing the code. Changed line 21 in scripts.js from target to currentTarget.
 
--
+- old code:
+```
+function newGame() {
+    game.currentGame = [];
+    game.playerMoves = [];
+    game.score = 0;
+
+    for (let arrow of document.getElementsByClassName("arrow")) {
+        if (arrow.getAttribute("data-listener") !== "true") {
+            arrow.addEventListener("click", (e) => {
+                if (game.currentGame.length > 0 && !game.turnInProgress) {
+                    let move = e.target.getAttribute("id");
+                    game.lastButton = move;
+                    game.playerMoves.push(move);
+                    lightsOn(move);
+                    playerTurn();
+                }
+            });
+            arrow.setAttribute("data-listener", "true");
+        }
+    }
+    showScore();
+    addTurn();
+}
+```
+- new code:
+```
+function newGame() {
+    game.currentGame = [];
+    game.playerMoves = [];
+    game.score = 0;
+
+    for (let arrow of document.getElementsByClassName("arrow")) {
+        if (arrow.getAttribute("data-listener") !== "true") {
+            arrow.addEventListener("click", (e) => {
+                if (game.currentGame.length > 0 && !game.turnInProgress) {
+                    let move = e.currentTarget.getAttribute("id");
+                    game.lastButton = move;
+                    game.playerMoves.push(move);
+                    lightsOn(move);
+                    playerTurn();
+                }
+            });
+            arrow.setAttribute("data-listener", "true");
+        }
+    }
+    showScore();
+    addTurn();
+}
+```
+
+#### Bug 2
+- When first loading the page, high score was setting to Null instead of "0" if there wasnt anything in local storage. I had added a "game.highScore++ at line 129 and it was breaking the loop of updating highscore if it was lower than current score.
+
+- old code:
+```
+function playerTurn() {
+    let i = game.playerMoves.length - 1;
+    if (game.currentGame[i] === game.playerMoves[i]) {
+        if (game.currentGame.length === game.playerMoves.length) {
+            game.score++;
+            showScore();
+            addTurn();
+        }
+    } else {
+        let showGameOverModal = document.getElementById("game-over-modal");
+        showGameOverModal.style.display = "block";
+        console.log(game.score);
+        console.log(game.highScore);
+        if (game.score >= game.highScore){
+        highScore();
+    }
+}
+}
+```
+- old code:
+```
+function playerTurn() {
+    let i = game.playerMoves.length - 1;
+    if (game.currentGame[i] === game.playerMoves[i]) {
+        if (game.currentGame.length === game.playerMoves.length) {
+            game.score++;
+            game.highScore++;
+            showScore();
+            addTurn();
+        }
+    } else {
+        let showGameOverModal = document.getElementById("game-over-modal");
+        showGameOverModal.style.display = "block";
+        console.log(game.score);
+        console.log(game.highScore);
+        if (game.score >= game.highScore){
+        highScore();
+    }
+}
+}
+```
+
+#### Bug 3
+- Couldnt get the game-over modal to active when you input the wrong sequence. needed to change the names of the "let" objects in modalscripts.js for the game-over-modal and change it to look for the [1] instead of [0] in the span, and then link it in the player turn function at line 133, 134 in scripts.js.
+
+- old code:
+```
+// Get the modal
+let modal = document.getElementById("game-over-modal");
+
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[1];
+
+// When the user clicks the button, open the modal 
+span.onclick = function() {
+  modal.style.display = "none";
+}
+```
+```
+gameOverModal.show()
+```
+- new code:
+```
+// Get the modal
+let showGameOverModal = document.getElementById("game-over-modal");
+
+// Get the <span> element that closes the modal
+let gameOverSpan = document.getElementsByClassName("close")[1];
+
+// When the user clicks the button, open the modal 
+gameOverSpan.onclick = function() {
+  showGameOverModal.style.display = "none";
+}
+```
+```
+let showGameOverModal = document.getElementById("game-over-modal");
+showGameOverModal.style.display = "block";
+```
+
 
 - ### Unfixed Bugs
  - n/a
@@ -127,11 +261,11 @@ This is a sample of shots of what the site looks like on different devices.
 
 ### Accessibility Testing
 
-To check the colors and fonts, I used Lighthouse in the Google devtools. The results are shown below:
+To check the colors, fonts, accessibilty and performance I used Lighthouse in the Google devtools. The results are shown below:
 
 | Home  |
 | ------- |
-| ![]() |
+| ![lighthouse result index.html](assets/media/memorrow-lighthouse.png) |
 
 
 ## Deployment
@@ -154,7 +288,7 @@ To check the colors and fonts, I used Lighthouse in the Google devtools. The res
 ### Local Deployment
 1. Sign up to [Gitpod](https://gitpod.io/)
 2. Download the Gitpod browser extension.
-3. On GitHub.com, navigate to the [SamuelMacKay/](https://github.com/SamuelMacKay/) repository.
+3. On GitHub.com, navigate to the [SamuelMacKay/](https://github.com/SamuelMacKay/Memory-game) repository.
 4. Above the list of files click the button that says 'Gitpod'.
 
 ### Remote Deployment 
@@ -163,19 +297,19 @@ To check the colors and fonts, I used Lighthouse in the Google devtools. The res
  2. Navigate to the settings tab.
  3. Click on the tab called 'pages' on the left hand side.
  4. From the source drop down list under the heading Build and deployment, select main.
- 5. The page will hten provide the link to the website.
+ 5. The page will then provide the link to the website.
 
- The live link can be found here - [](https://samuelmackay.github.io//)
+ The live link can be found here - [Memorrow](https://samuelmackay.github.io/Memory-game/)
 
 ## Credits
 
 ### Content
 - Processes from the CI Love Running project was used to help create this website - [CI Love Running](https://code-institute-org.github.io/love-running-2.0/index.html)
 - Proccesses from the CI Love Maths project was used to help create this website - [CI Love Maths](https://github.com/Code-Institute-Solutions/love-maths-2.0-sourcecode.git)
-- Proccesses from the CI testing with jest was used to help create this website - [CI Jest Testing](https://github.com/Code-Institute-Solutions/Jest_Testing_Part2.git)#
+- Proccesses from the CI testing with jest was used to help create this website - [CI Jest Testing](https://github.com/Code-Institute-Solutions/Jest_Testing_Part2.git)
 - HTML, CSS and Javascript code help was taken from w3schools - [W3Schools](https://www.w3schools.com/)
 - Buttons and Modal are from Bootstrap5 [Bootstrap](https://getbootstrap.com/docs/5.3)
-- Keydown for arrow key functionality was taking from [Stackoverflow] (https://stackoverflow.com/questions/57681634/press-an-arrow-key-using-a-html-button-or-simply-press-it)
+- Keydown for arrow key functionality was taking from [Stackoverflow](https://stackoverflow.com/questions/57681634/press-an-arrow-key-using-a-html-button-or-simply-press-it)
 
 ### Media
 
