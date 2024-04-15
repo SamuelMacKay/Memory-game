@@ -83,6 +83,9 @@ This is a sample of shots of what the site looks like on different devices.
  
 ![css validation](assets/media/css-validator.png)
 
+- JS 
+    - scripts.js: no errors were returned when passing through jsint.com![scripts jshint](assets/media/scripts-jshint.png)
+    - modalscript.js: no errors were returned when passing through jsint.com ![modal scripts jshint](assets/media/modalscripts-jshint.png)
 ### Manual Testing
 - I have tested that this page works in different web browsers.
 - I have tested that the project is responsive and works with different device sizes. It looks good and functions as normal. 
