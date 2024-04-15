@@ -10,13 +10,15 @@ Memorrow is an arrow based memory game, to test your mind and reaction skills. T
 |1| As a First-time User, <br> I want to be able to play a simple game quickly <br> so I can test my memory without having to read a bunch of instructions. <br><br> I know I am done when I have a simple game that is intuitive and self explanatory, and has simple instructions on how to play |
 |2|As a repeat user, <br> I want to be able to track my highest score <br> so I can compete with my self and try and improve. <br><br> I know I am done when I have a score tracking system that keeps track of my current and high score.|
 |3|as the Creator, <br> I want to be able to be able to play the game with arrow keys or mouse clicks <br> So I have the option between the 2, and other users can play with their preference <br><br> When both the onClick and onKeyDown functions work interchangably.|
-|4|As a First-time user,<br> I want to be able to find the "how to play" instructions quickly and easily the first time I visit the site <br> So I can easily learn the rules if I am not understanding. <br> <br> I know I am done when a pop-up tool tip appears on first loading the game above the drop down menu with the instructions inside.|
-|5|As the creator, <br> I want a visually appealing game that is simple and pleasing to look at.<br> So it is satisfying to use and other players will be inticed to play<br> When I have a simple, appealing game that has eye catching colours and uses simple shapes and symmetry. |
+|4|As a First-time user,<br> I want to be able to find the "how to play" instructions quickly and easily the first time I visit the site <br> So I can easily learn the rules if I am not understanding. <br> <br> I know I am done when an easy to see and universally recognised icon to represent info button drops down a menu with the instructions inside.|
+|5|As the creator, <br> I want a visually appealing game that is simple and pleasing to look at.<br> So it is satisfying to use and other players will be enticed to play<br> When I have a simple, appealing game that has eye catching colours and uses simple shapes and symmetry. |
 
 ***
 
 ## Wireframes
-Below are the designs that I can use to build the site. I have used the user story numbers to link where I can meet the goal in my design. This will help me to think about the users needs as I build the page.
+Below is the design that I can use to build the site. I have used the user story numbers to link where I can meet the goal in my design. This will help me to think about the users needs as I build the page.
+![wirefames](assets/media/memorrow-wireframe.png)
+![wirefame modal](assets/media/wireframe-modal.png)
 
 ***
 
@@ -24,14 +26,13 @@ Below are the designs that I can use to build the site. I have used the user sto
 
 ### Existing Features
 
-- __Hamburger DropDown Intructions__
+- __DropDown Intructions__
 
 - A menu that, when clicked, shows the intructions on how to interact with the game
-- has a tool tip pop up when the page is first loaded that says "First time? Click here!"
 
 - __Arrow Squares__
 
-- The main image of the game, showing "↑", "↓", "←" or "→", in a "◇"
+- The main image of the game, showing "↑", "↓", "←" or "→", in a "□"
 - Light up 1 at a time in an increasing length in a random order that must then be repeated by the player
 
 - __Score__
@@ -60,17 +61,19 @@ This is a sample of shots of what the site looks like on different devices.
 #### Desktop
 |Firefox 120.0.1|Chrome 120.0.6099.225|
 | ------------- | ------------------ |
-|![]()|![]()|
+|![firefox](assets/media/firefox-fullscreen.png)|![chrome](assets/media/chrome-fullscreen.png)|
 
 
-![responsive chrome and firefox Small]()
-![responsive chrome and firefox Medium]()
+### small 
+![responsive chrome and firefox Small](assets/media/computer-small.png)
+### medium
+![responsive chrome and firefox Medium](assets/media/computer-medium.png)
 
 #### Mobile
 
 ##### Safari iOS Phone 17.2
 
-![]()
+![iPhone screenshot](assets/media/iPhone-safari.jpg)
 
 
 ### Validator Testing
@@ -232,6 +235,32 @@ let showGameOverModal = document.getElementById("game-over-modal");
 showGameOverModal.style.display = "block";
 ```
 
+#### Bug 4
+- the click function i created for my start button was going off at ANY click rather than just ones targeting the start button, 
+fixed it by giving the event listener a target to attach to.
+
+- Old code:
+```
+document.addEventListener("DOMContentLoaded", (event) => {
+    document.getElementById("start-button");
+    addEventListener ("click", (e) => {
+        newGame();
+    });
+  });
+```
+- New code:
+```
+document.addEventListener("DOMContentLoaded", (event) => {
+    let start = document.getElementById("start-button");
+    start.addEventListener ("click", () => {
+      newGame()
+    });
+  });
+```
+
+#### Bug 5
+- When clicking start game when the previous lightup class is still active, it breaks the game.
+
 
 - ### Unfixed Bugs
  - n/a
@@ -239,11 +268,11 @@ showGameOverModal.style.display = "block";
 ### User stories Testing
 |Story No.|Result|Story/ Evidence|
 | ------------- | ------------- | ------------- |
-|1|<font color="green">Test Pass</font>| <br> As a First-time User, <br> I want to be able to play a simple game quickly <br> so I can test my memory without having to read a bunch of instructions. <br><br> I know I am done when I have a simple game that is intuitive and self explanatory, and has simple instructions on how to play <br><br>Evidence:<br>.<br> ![]()|
-|2|<font color="green">Test Pass</font> |As a repeat user, <br> I want to be able to track my highest score <br> so I can compete with my self and try and improve. <br><br> I know I am done when I have a score tracking system that keeps track of my current and high score.<br><br>Evidence:<br>. <br> ![]()|
-|3|*<font color="yellow">Test Pass, more required</font>* |as the Creator, <br> I want to be able to be able to play the game with arrow keys or mouse clicks <br> So I have the option between the 2, and other users can play with their preference <br><br> When both the onClick and onKeyDown functions work interchangably.<br><br>Evidence:<br> <br>![]()||
-|4|*<font color="yellow">Test Pass, more required</font>* |As a First-time user,<br> I want to be able to find the "how to play" instructions quickly and easily the first time I visit the site <br> So I can easily learn the rules if I am not understanding. <br> <br> I know I am done when a pop-up tool tip appears on first loading the game above the drop down menu with the instructions inside.<br><br>Evidence:<br> .<br>![]()|
-|5|<font color="green">Test Pass</font> |As the creator, <br> I want a visually appealing game that is simple and pleasing to look at.<br> So it is satisfying to use and other players will be inticed to play<br> When I have a simple, appealing game that has eye catching colours and uses simple shapes and symmetry. <br><br>Evidence:<br> .<br> ![]()|
+|1|<font color="green">Test Pass</font>| <br> As a First-time User, <br> I want to be able to play a simple game quickly <br> so I can test my memory without having to read a bunch of instructions. <br><br> I know I am done when I have a simple game that is intuitive and self explanatory, and has simple instructions on how to play <br><br>Evidence:<br>.<br> ![instructions](assets/media/instructions.png)|
+|2|<font color="green">Test Pass</font> |As a repeat user, <br> I want to be able to track my highest score <br> so I can compete with my self and try and improve. <br><br> I know I am done when I have a score tracking system that keeps track of my current and high score.<br><br>Evidence:<br>. <br> ![highscore evidence](assets/media/highscore-evidence.png)|
+|3|<font color="green">Test Pass</font> |as the Creator, <br> I want to be able to be able to play the game with arrow keys or mouse clicks <br> So I have the option between the 2, and other users can play with their preference <br><br> When both the onClick and onKeyDown functions work interchangably.<br><br>Evidence:<br> <br> the key down event listener triggers the click event, so both clicking and arrow keys work to play. ![keydown evidence](assets/media/keydown-evidence.png)|
+|4|<font color="green">Test Pass</font> |As a First-time user,<br> I want to be able to find the "how to play" instructions quickly and easily the first time I visit the site <br> So I can easily learn the rules if I am not understanding. <br> <br> I know I am done when an easy to see and universally recognised icon to represent info button drops down a menu with the instructions inside.<br><br>Evidence:<br> .<br>![info evidence](assets/media/info-evidence.png)|
+|5|<font color="green">Test Pass</font> |As the creator, <br> I want a visually appealing game that is simple and pleasing to look at.<br> So it is satisfying to use and other players will be enticed to play<br> When I have a simple, appealing game that has eye catching colours and uses simple shapes and symmetry. <br><br>Evidence:<br> .<br> ![simple evidence](assets/media/simple-evidence.png)|
 
 ### Accessibility Testing
 
@@ -258,7 +287,7 @@ To check the colors, fonts, accessibilty and performance I used Lighthouse in th
 
 ### Cloning & Forking
 #### Fork
-1. On GitHub.com, navigate to the [SamuelMacKay/](https://github.com/SamuelMacKay/) repository.
+1. On GitHub.com, navigate to the [SamuelMacKay/Memory-game](https://github.com/SamuelMacKay/Memory-game) repository.
 2. In the top-right corner of the page, click Fork.
 3. By default, forks are named the same as their parent repositories. You can change the name of the fork to distinguish it further.
 4. Add a description to your fork.
@@ -274,7 +303,7 @@ To check the colors, fonts, accessibilty and performance I used Lighthouse in th
 ### Local Deployment
 1. Sign up to [Gitpod](https://gitpod.io/)
 2. Download the Gitpod browser extension.
-3. On GitHub.com, navigate to the [SamuelMacKay/](https://github.com/SamuelMacKay/Memory-game) repository.
+3. On GitHub.com, navigate to the [SamuelMacKay/Memory-game](https://github.com/SamuelMacKay/Memory-game) repository.
 4. Above the list of files click the button that says 'Gitpod'.
 
 ### Remote Deployment 
