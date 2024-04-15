@@ -51,9 +51,9 @@ function newGame() {
  * starts newGame when clicking start, pressing "space" and "enter"
  */
 document.addEventListener("DOMContentLoaded", (event) => {
-    document.getElementById("start-button");
-    addEventListener ("click", (e) => {
-        newGame();
+    let start = document.getElementById("start-button");
+    start.addEventListener ("click", () => {
+      newGame()
     });
   });
 
@@ -150,8 +150,6 @@ function playerTurn() {
     } else {
         let showGameOverModal = document.getElementById("game-over-modal");
         showGameOverModal.style.display = "block";
-        console.log(game.score);
-        console.log(game.highScore);
         if (game.score >= game.highScore){
         highScore();
     }
