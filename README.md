@@ -28,31 +28,31 @@ Below is the design that I can use to build the site. I have used the user story
 
 - __DropDown Intructions__
 
-- A menu that, when clicked, shows the intructions on how to interact with the game
+- A menu that, when clicked, shows the instructions on how to interact with the game.
 
 - __Arrow Squares__
 
-- The main image of the game, showing "↑", "↓", "←" or "→", in a "□"
-- Light up 1 at a time in an increasing length in a random order that must then be repeated by the player
+- The main image of the game, showing "↑", "↓", "←" or "→", in a "□".
+- Light up 1 at a time in an increasing length in a random order that must then be repeated by the player.
 
 - __Score__
 
-- A current score tracker, increasing by 1 each successfully completed round
-- A high score tracker, that remembers your most recent highest score
+- A current score tracker, increasing by 1 each successfully completed round.
+- A high score tracker, that remembers your most recent highest score.
 
 - __Start game__
 
-- A start game button so you can begin a game or restart your current game(resetting your current score)
+- A start game button so you can begin a game or restart your current game(resetting your current score).
 
 
 
 ### Features Left to Implement
 
-- When you achieve a new high score, put in a name that is saved to local storage with the highscore info, and accessible from a button that opens a modal with the name and score"
+- When you achieve a new high score, put in a name that is saved to local storage with the highscore info, and accessible from a button that opens a modal with the name and score.
 
-- have a confetti/firework effect when you beat previous score
+- have a confetti/firework effect when you beat previous score.
 
-- diffculty option, removes 1-2 of the buttons at easier difficulties and addes diagonal buttons for hardest difficulty, with a leaderboard for each difficulty
+- difficulty option, removing/adding to make it easier/harder, with a leaderboard for each difficulty.
 
 ## Testing
 
@@ -152,29 +152,8 @@ function newGame() {
 ```
 
 #### Bug 2
-- When first loading the page, high score was setting to Null instead of "0" if there wasnt anything in local storage. I had added a "game.highScore++ at line 129 and it was breaking the loop of updating highscore if it was lower than current score.
+- When first loading the page, high score was setting to Null instead of "0" if there wasnt anything in local storage. I had added a "game.highScore++" at line 129 and it was breaking the loop of updating highscore if it was lower than current score.
 
-- old code:
-```
-function playerTurn() {
-    let i = game.playerMoves.length - 1;
-    if (game.currentGame[i] === game.playerMoves[i]) {
-        if (game.currentGame.length === game.playerMoves.length) {
-            game.score++;
-            showScore();
-            addTurn();
-        }
-    } else {
-        let showGameOverModal = document.getElementById("game-over-modal");
-        showGameOverModal.style.display = "block";
-        console.log(game.score);
-        console.log(game.highScore);
-        if (game.score >= game.highScore){
-        highScore();
-    }
-}
-}
-```
 - old code:
 ```
 function playerTurn() {
@@ -197,9 +176,30 @@ function playerTurn() {
 }
 }
 ```
+- new code:
+```
+function playerTurn() {
+    let i = game.playerMoves.length - 1;
+    if (game.currentGame[i] === game.playerMoves[i]) {
+        if (game.currentGame.length === game.playerMoves.length) {
+            game.score++;
+            showScore();
+            addTurn();
+        }
+    } else {
+        let showGameOverModal = document.getElementById("game-over-modal");
+        showGameOverModal.style.display = "block";
+        console.log(game.score);
+        console.log(game.highScore);
+        if (game.score >= game.highScore){
+        highScore();
+    }
+}
+}
+```
 
 #### Bug 3
-- Couldnt get the game-over modal to active when you input the wrong sequence. needed to change the names of the "let" objects in modalscripts.js for the game-over-modal and change it to look for the [1] instead of [0] in the span, and then link it in the player turn function at line 133, 134 in scripts.js.
+- Couldn't get the game-over modal to active when you input the wrong sequence. needed to change the names of the "let" objects in modalscripts.js for the game-over-modal and change it to look for the [1] instead of [0] in the span, and then link it in the player turn function at line 133, 134 in scripts.js.
 
 - old code:
 ```
@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 |Story No.|Result|Story/ Evidence|
 | ------------- | ------------- | ------------- |
 |1|<font color="green">Test Pass</font>| <br> As a First-time User, <br> I want to be able to play a simple game quickly <br> so I can test my memory without having to read a bunch of instructions. <br><br> I know I am done when I have a simple game that is intuitive and self explanatory, and has simple instructions on how to play <br><br>Evidence:<br>.<br> ![instructions](assets/media/instructions.png)|
-|2|<font color="green">Test Pass</font> |As a repeat user, <br> I want to be able to track my highest score <br> so I can compete with my self and try and improve. <br><br> I know I am done when I have a score tracking system that keeps track of my current and high score.<br><br>Evidence:<br>. <br> ![highscore evidence](assets/media/highscore-evidence.png)|
+|2|<font color="green">Test Pass</font> |As a repeat user, <br> I want to be able to track my highest score <br> so I can compete with myself and try and improve. <br><br> I know I am done when I have a score tracking system that keeps track of my current and high score.<br><br>Evidence:<br>. <br> ![highscore evidence](assets/media/highscore-evidence.png)|
 |3|<font color="green">Test Pass</font> |as the Creator, <br> I want to be able to be able to play the game with arrow keys or mouse clicks <br> So I have the option between the 2, and other users can play with their preference <br><br> When both the onClick and onKeyDown functions work interchangably.<br><br>Evidence:<br> <br> the key down event listener triggers the click event, so both clicking and arrow keys work to play. ![keydown evidence](assets/media/keydown-evidence.png)|
 |4|<font color="green">Test Pass</font> |As a First-time user,<br> I want to be able to find the "how to play" instructions quickly and easily the first time I visit the site <br> So I can easily learn the rules if I am not understanding. <br> <br> I know I am done when an easy to see and universally recognised icon to represent info button drops down a menu with the instructions inside.<br><br>Evidence:<br> .<br>![info evidence](assets/media/info-evidence.png)|
 |5|<font color="green">Test Pass</font> |As the creator, <br> I want a visually appealing game that is simple and pleasing to look at.<br> So it is satisfying to use and other players will be enticed to play<br> When I have a simple, appealing game that has eye catching colours and uses simple shapes and symmetry. <br><br>Evidence:<br> .<br> ![simple evidence](assets/media/simple-evidence.png)|
