@@ -9,8 +9,11 @@ let game = {
     turnNumber: 0,
     lastButton: "",
     turnInProgress: false,
-    choices: ["up", "left", "right", "down"]
-};
+    choices: ["up", "left", "right", "down"],
+    timer: [],
+    interval: []
+
+  };
 
 /**  
  * Waits until DOM is loaded, and then writes local storage highscore into "high-score" div or sets it to "0" if its empty
@@ -25,12 +28,21 @@ document.addEventListener("DOMContentLoaded", (event) => {
  * Function that starts the game when you click "start-button", and will reset the current game if pressed during the game
  */
 function newGame() {
+    for (let timerId of game.timer) {
+      clearTimeout (timerId);
+    }
+    for (let intervalId of game.interval) {
+      clearInterval (intervalId);
+    }
+    game.timer = [];
+    game.interval = [];
     game.currentGame = [];
     game.playerMoves = [];
     game.score = 0;
 
     for (let arrow of document.getElementsByClassName("arrow")) {
         if (arrow.getAttribute("data-listener") !== "true") {
+          
             arrow.addEventListener("click", (e) => {
                 if (game.currentGame.length > 0 && !game.turnInProgress) {
                     let move = e.currentTarget.getAttribute("id");
@@ -53,7 +65,7 @@ function newGame() {
 document.addEventListener("DOMContentLoaded", (event) => {
     let start = document.getElementById("start-button");
     start.addEventListener ("click", () => {
-      newGame()
+      newGame();
     });
   });
 
@@ -121,6 +133,7 @@ function showTurns() {
             game.turnInProgress = false;
         }
     }, 1000);
+    game.interval.push(turns);
 }
 
 /**  
@@ -128,9 +141,10 @@ function showTurns() {
  */
 function lightsOn(arr) {
     document.getElementById(arr).classList.add("light-up");
-    setTimeout(function () {
+    let timerId = setTimeout(function () {
         document.getElementById(arr).classList.remove("light-up");
     }, 400);
+    game.timer.push(timerId);
 }
 
 /**  

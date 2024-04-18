@@ -52,7 +52,7 @@ Below is the design that I can use to build the site. I have used the user story
 
 - have a confetti/firework effect when you beat previous score.
 
-- difficulty option, removing/adding to make it easier/harder, with a leaderboard for each difficulty.
+- difficulty option, removing/adding arrows to make it easier/harder, with a leaderboard for each difficulty.
 
 ## Testing
 
