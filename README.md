@@ -7,11 +7,11 @@ Memorrow is an arrow based memory game, to test your mind and reaction skills. T
 ## User Stories 
 |Story No.|Story|
 | ------------- | ------------- |
-|1| As a First-time User, <br> I want to be able to play a simple game quickly <br> so I can test my memory without having to read a bunch of instructions. <br><br> I know I am done when I have a simple game that is intuitive and self explanatory, and has simple instructions on how to play |
+|1| As a First-time User, <br> I want to be able to play a simple game quickly <br> so I can test my memory without having to read a bunch of instructions. <br><br> I know I am done when I have a simple game that is intuitive and self explanatory, and has simple instructions on how to play. |
 |2|As a repeat user, <br> I want to be able to track my highest score <br> so I can compete with my self and try and improve. <br><br> I know I am done when I have a score tracking system that keeps track of my current and high score.|
-|3|as the Creator, <br> I want to be able to be able to play the game with arrow keys or mouse clicks <br> So I have the option between the 2, and other users can play with their preference <br><br> When both the onClick and onKeyDown functions work interchangably.|
+|3|as the Creator, <br> I want to be able to be able to play the game with arrow keys or mouse clicks <br> So I have the option between the 2, and other users can play with their preference. <br><br> When both the onClick and onKeyDown functions work interchangably.|
 |4|As a First-time user,<br> I want to be able to find the "how to play" instructions quickly and easily the first time I visit the site <br> So I can easily learn the rules if I am not understanding. <br> <br> I know I am done when an easy to see and universally recognised icon to represent info button drops down a menu with the instructions inside.|
-|5|As the creator, <br> I want a visually appealing game that is simple and pleasing to look at.<br> So it is satisfying to use and other players will be enticed to play<br> When I have a simple, appealing game that has eye catching colours and uses simple shapes and symmetry. |
+|5|As the creator, <br> I want a visually appealing game that is simple and pleasing to look at.<br> So it is satisfying to use and other players will be enticed to play. <br> I know I am done when I have a simple, appealing game that has eye catching colours and uses simple shapes and symmetry. |
 
 ***
 
@@ -24,29 +24,29 @@ Below is the design that I can use to build the site. I have used the user story
 
 ## Features
 
-### Existing Features
+## Existing Features
 
-- __DropDown Intructions__
+ __DropDown Intructions__
 
 - A menu that, when clicked, shows the instructions on how to interact with the game.
 
-- __Arrow Squares__
+__Arrow Squares__
 
 - The main image of the game, showing "↑", "↓", "←" or "→", in a "□".
 - Light up 1 at a time in an increasing length in a random order that must then be repeated by the player.
 
-- __Score__
+__Score__
 
 - A current score tracker, increasing by 1 each successfully completed round.
 - A high score tracker, that remembers your most recent highest score.
 
-- __Start game__
+__Start game__
 
 - A start game button so you can begin a game or restart your current game(resetting your current score).
 
 
 
-### Features Left to Implement
+## Features Left to Implement
 
 - When you achieve a new high score, put in a name that is saved to local storage with the highscore info, and accessible from a button that opens a modal with the name and score.
 
@@ -79,12 +79,13 @@ This is a sample of shots of what the site looks like on different devices.
 ### Validator Testing
 - HTML
     - index.html: No errors were returned when passing through the official W3C validator<br> 
-    https://validator.w3.org/nu/?doc=https%3A%2F%2Fsamuelmackay.github.io%2Fminiature-commission-painter%2Findex.html
+    [W3C HTML validator link!](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsamuelmackay.github.io%2Fminiature-commission-painter%2Findex.html)
 
 
 - CSS 
  
-![css validation](assets/media/css-validator.png)
+    - style.css: No errors were returned when passing through the offical w3c css validator:<br>
+    [W3C CSS Validator link!](http://jigsaw.w3.org/css-validator/validator?lang=en&profile=css3svg&uri=https%3A%2F%2Fsamuelmackay.github.io%2FMemory-game%2Fassets%2Fcss%2Fstyle.css&usermedium=all&vextwarning=&warning=1)
 
 - JS 
     - scripts.js: no errors were returned when passing through jsint.com![scripts jshint](assets/media/scripts-jshint.png)
@@ -92,7 +93,7 @@ This is a sample of shots of what the site looks like on different devices.
 ### Manual Testing
 - I have tested that this page works in different web browsers.
 - I have tested that the project is responsive and works with different device sizes. It looks good and functions as normal. 
-- I have tested the interactiviy of the game and it reacts as expected
+- I have tested the interactiviy of the game and it reacts as expected.
 - I have tested that all text and fonts are readable and easy to understand.
 
 ### Bugs
@@ -259,7 +260,92 @@ document.addEventListener("DOMContentLoaded", (event) => {
 ```
 
 #### Bug 5
-- When clicking start game when the previous lightup class is still active, it breaks the game.
+- When clicking start game when the previous lightup class is still active, it breaks the game. added arrays for the timeout and interval timers set for the lightOn and showTurn funtions, so that clicking newGame() clears and resets those timers.
+
+- old code:
+```
+let game = {
+    currentGame: [],
+    playerMoves: [],
+    score: 0,
+    highScore: 0,
+    turnNumber: 0,
+    lastButton: "",
+    turnInProgress: false,
+    choices: ["up", "left", "right", "down"]
+  };  
+
+function showTurns() {
+    game.turnInProgress = true;
+    game.turnNumber = 0;
+    setInterval(function () {
+        lightsOn(game.currentGame[game.turnNumber]);
+        game.turnNumber++;
+        if (game.turnNumber >= game.currentGame.length) {
+            clearInterval(turns);
+            game.turnInProgress = false;
+        }
+    }, 1000);
+}
+
+function lightsOn(arr) {
+    document.getElementById(arr).classList.add("light-up");
+    setTimeout(function () {
+        document.getElementById(arr).classList.remove("light-up");
+    }, 400);
+}
+
+
+```
+- new code:
+```
+let game = {
+    currentGame: [],
+    playerMoves: [],
+    score: 0,
+    highScore: 0,
+    turnNumber: 0,
+    lastButton: "",
+    turnInProgress: false,
+    choices: ["up", "left", "right", "down"],
+    timer: [],
+    interval: []
+
+  };
+
+  function newGame() {
+    for (let timerId of game.timer) {
+      clearTimeout (timerId);
+    }
+    for (let intervalId of game.interval) {
+      clearInterval (intervalId);
+    }
+    ...
+  }
+
+function showTurns() {
+    game.turnInProgress = true;
+    game.turnNumber = 0;
+    let turns = setInterval(function () {
+        lightsOn(game.currentGame[game.turnNumber]);
+        game.turnNumber++;
+        if (game.turnNumber >= game.currentGame.length) {
+            clearInterval(turns);
+            game.turnInProgress = false;
+        }
+    }, 1000);
+    game.interval.push(turns);
+}
+
+function lightsOn(arr) {
+    document.getElementById(arr).classList.add("light-up");
+    let timerId = setTimeout(function () {
+        document.getElementById(arr).classList.remove("light-up");
+    }, 400);
+    game.timer.push(timerId);
+}
+
+```
 
 
 - ### Unfixed Bugs
@@ -268,9 +354,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 ### User stories Testing
 |Story No.|Result|Story/ Evidence|
 | ------------- | ------------- | ------------- |
-|1|<font color="green">Test Pass</font>| <br> As a First-time User, <br> I want to be able to play a simple game quickly <br> so I can test my memory without having to read a bunch of instructions. <br><br> I know I am done when I have a simple game that is intuitive and self explanatory, and has simple instructions on how to play <br><br>Evidence:<br>.<br> ![instructions](assets/media/instructions.png)|
+|1|<font color="green">Test Pass</font>| <br> As a First-time User, <br> I want to be able to play a simple game quickly <br> so I can test my memory without having to read a bunch of instructions. <br><br> I know I am done when I have a simple game that is intuitive and self explanatory, and has simple instructions on how to play. <br><br>Evidence:<br>.<br> ![instructions](assets/media/instructions.png)|
 |2|<font color="green">Test Pass</font> |As a repeat user, <br> I want to be able to track my highest score <br> so I can compete with myself and try and improve. <br><br> I know I am done when I have a score tracking system that keeps track of my current and high score.<br><br>Evidence:<br>. <br> ![highscore evidence](assets/media/highscore-evidence.png)|
-|3|<font color="green">Test Pass</font> |as the Creator, <br> I want to be able to be able to play the game with arrow keys or mouse clicks <br> So I have the option between the 2, and other users can play with their preference <br><br> When both the onClick and onKeyDown functions work interchangably.<br><br>Evidence:<br> <br> the key down event listener triggers the click event, so both clicking and arrow keys work to play. ![keydown evidence](assets/media/keydown-evidence.png)|
+|3|<font color="green">Test Pass</font> |as the Creator, <br> I want to be able to be able to play the game with arrow keys or mouse clicks <br> So I have the option between the 2, and other users can play with their preference. <br><br> When both the onClick and onKeyDown functions work interchangably.<br><br>Evidence:<br> <br> the key down event listener triggers the click event, so both clicking and arrow keys work to play. ![keydown evidence](assets/media/keydown-evidence.png)|
 |4|<font color="green">Test Pass</font> |As a First-time user,<br> I want to be able to find the "how to play" instructions quickly and easily the first time I visit the site <br> So I can easily learn the rules if I am not understanding. <br> <br> I know I am done when an easy to see and universally recognised icon to represent info button drops down a menu with the instructions inside.<br><br>Evidence:<br> .<br>![info evidence](assets/media/info-evidence.png)|
 |5|<font color="green">Test Pass</font> |As the creator, <br> I want a visually appealing game that is simple and pleasing to look at.<br> So it is satisfying to use and other players will be enticed to play<br> When I have a simple, appealing game that has eye catching colours and uses simple shapes and symmetry. <br><br>Evidence:<br> .<br> ![simple evidence](assets/media/simple-evidence.png)|
 
@@ -319,14 +405,14 @@ To check the colors, fonts, accessibilty and performance I used Lighthouse in th
 ## Credits
 
 ### Content
-- Processes from the CI Love Running project was used to help create this website - [CI Love Running](https://code-institute-org.github.io/love-running-2.0/index.html)
-- Proccesses from the CI Love Maths project was used to help create this website - [CI Love Maths](https://github.com/Code-Institute-Solutions/love-maths-2.0-sourcecode.git)
-- Proccesses from the CI testing with jest was used to help create this website - [CI Jest Testing](https://github.com/Code-Institute-Solutions/Jest_Testing_Part2.git)
-- HTML, CSS and Javascript code help was taken from w3schools - [W3Schools](https://www.w3schools.com/)
-- Buttons and Modal are from Bootstrap5 [Bootstrap](https://getbootstrap.com/docs/5.3)
-- Keydown for arrow key functionality was taking from [Stackoverflow](https://stackoverflow.com/questions/57681634/press-an-arrow-key-using-a-html-button-or-simply-press-it)
+- Processes from the CI Love Running project was used to help create this website <br> [CI Love Running](https://code-institute-org.github.io/love-running-2.0/index.html)
+- Proccesses from the CI Love Maths project was used to help create this website <br> [CI Love Maths](https://github.com/Code-Institute-Solutions/love-maths-2.0-sourcecode.git)
+- Proccesses from the CI testing with jest was used to help create this website <br> [CI Jest Testing](https://github.com/Code-Institute-Solutions/Jest_Testing_Part2.git)
+- HTML, CSS and Javascript code help was taken from w3schools <br>[W3Schools](https://www.w3schools.com/)
+- Buttons and Modal are from Bootstrap5 <br> [Bootstrap](https://getbootstrap.com/docs/5.3)
+- Keydown for arrow key functionality was taking from <br>[Stackoverflow](https://stackoverflow.com/questions/57681634/press-an-arrow-key-using-a-html-button-or-simply-press-it)
 
 ### Media
 
 #### Icons
-- All page Icons - [Font Awesome](https://fontawesome.com/)
+- All page Icons <br> [Font Awesome](https://fontawesome.com/)
